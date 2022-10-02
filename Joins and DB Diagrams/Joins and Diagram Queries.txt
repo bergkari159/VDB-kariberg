@@ -1,0 +1,26 @@
+1.SELECT Apartment.Apartment_ID, Apartment.Apt_Number, Apartment.Rent, Apartment.Beds, Apartment.Baths, Apartment.Sq_Ft, Apartment.Building_ID, Apartment.Tenant_ID, Apartment.Manager_ID, Building.Building_ID AS Expr1, 
+                  Building.Building_Name, Building.Address_ID
+FROM     Apartment INNER JOIN
+                  Building ON Apartment.Building_ID = Building.Building_ID
+ORDER BY Building.Building_Name
+
+2. SELECT Apartment.Apartment_ID, Apartment.Apt_Number, Apartment.Rent, Apartment.Beds, Apartment.Baths, Apartment.Sq_Ft, Apartment.Building_ID, Apartment.Tenant_ID, Apartment.Manager_ID, Person.Person_ID, Person.First_Name, 
+                  Person.Last_Name, Person.Middle_Initial, Person.Address_ID, Person.Phone_Number
+FROM     Apartment INNER JOIN
+                  Person ON Apartment.Manager_ID = Person.Person_ID
+ORDER BY Person.Last_Name
+
+3. SELECT Building.Building_Name, Address.City
+FROM     Address INNER JOIN
+                  Building ON Address.Address_ID = Building.Address_ID
+ORDER BY Address.City
+
+4. SELECT Receipt.*, Invoice.*
+FROM     Receipt INNER JOIN
+                  Invoice ON Receipt.Invoice_ID = Invoice.InvoiceID
+
+5. SELECT LineItem.Qty, Product.Name, Product.Price
+FROM     Invoice INNER JOIN
+                  LineItem ON Invoice.InvoiceID = LineItem.Invoice_ID INNER JOIN
+                  Product ON LineItem.Product_ID = Product.Product_ID
+WHERE  (Invoice.InvoiceID = 1)
